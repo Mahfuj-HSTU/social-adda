@@ -1,9 +1,12 @@
 import React from 'react';
+import Input from './Input/Input';
+import Output from './Output/Output';
 
 const Home = () => {
     return (
-        <div className=''>
-            <h3>right side</h3>
+        <div>
+            <Input></Input>
+            <Output></Output>
         </div>
     );
 };
