@@ -31,7 +31,7 @@ const SignUp = () => {
                 setError( '' )
             } )
             .catch( error => {
-                console.error( error )
+                // console.error( error )
                 setError( error.message );
             } )
 
@@ -48,7 +48,7 @@ const SignUp = () => {
             } )
                 .then( res => res.json() )
                 .then( data => {
-                    console.log( data )
+                    // console.log( data )
                 } )
         }
     }

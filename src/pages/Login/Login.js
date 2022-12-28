@@ -25,12 +25,12 @@ const Login = () => {
         login( email, password )
             .then( result => {
                 const user = result.user
-                console.log( user );
+                // console.log( user );
                 form.reset();
                 navigate( from, { replace: true } )
             } )
             .catch( error => {
-                console.error( 'error ', error )
+                // console.error( 'error ', error )
                 toast.error( 'Register first to login' )
                 form.reset();
             } )
@@ -41,7 +41,7 @@ const Login = () => {
         providerLogin( googleProvider )
             .then( result => {
                 const user = result.user;
-                console.log( user );
+                // console.log( user );
                 saveUsers( user?.displayName, user?.email );
                 navigate( from, { replace: true } )
             } )
@@ -59,7 +59,7 @@ const Login = () => {
             } )
                 .then( res => res.json() )
                 .then( data => {
-                    console.log( data )
+                    // console.log( data )
                 } )
         }
     }

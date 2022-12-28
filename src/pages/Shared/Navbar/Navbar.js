@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../images/logo.ico'
-const Navbar = () => {
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
+const Navbar = () => {
+    const { user, logOut } = useContext( AuthContext )
+    // console.log( user )
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
 
     const menuItems =
         <>
@@ -10,8 +19,15 @@ const Navbar = () => {
             <li><Link to='/media'>Media</Link></li>
             <li><Link to='/message'>Message</Link></li>
             <li><Link to='/about'>About</Link></li>
-            <li><Link to='/login'>Login</Link></li>
-            <li><Link to='/signup'>SignUp</Link></li>
+            {
+                user?.email ?
+                    <li> <button onClick={ handleLogOut } className='btn-ghost'>Log Out</button></li>
+                    :
+                    <>
+                        <li><Link to='/login'>Login</Link></li>
+                        <li><Link to='/signup'>SignUp</Link></li>
+                    </>
+            }
         </>
 
 
