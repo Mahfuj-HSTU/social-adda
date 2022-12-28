@@ -21,7 +21,10 @@ const Navbar = () => {
             <li><Link to='/about'>About</Link></li>
             {
                 user?.email ?
-                    <li> <button onClick={ handleLogOut } className='btn-ghost'>Log Out</button></li>
+                    <>
+                        <img className='w-14 h-14 rounded-full text-blue-300' src={ user.photoUrl ? user.photoUrl : user.displayName } alt="profile" />
+                        <li> <button onClick={ handleLogOut } className='btn-ghost'>Log Out</button></li>
+                    </>
                     :
                     <>
                         <li><Link to='/login'>Login</Link></li>

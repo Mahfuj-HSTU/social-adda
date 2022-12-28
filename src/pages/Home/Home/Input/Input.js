@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +9,12 @@ const Input = () => {
     const { user } = useContext( AuthContext )
     const navigate = useNavigate();
 
+    const { data: details = [] } = useQuery( {
+        queryKey: [ 'details' ],
+        queryFn: () => fetch( `http://localhost:5000/users/${ user.email }` )
+            .then( res => res.json() )
+    } )
+
     const handleSubmit = ( event ) => {
         if ( !user ) {
             toast.error( 'To give post please login first.' )
@@ -15,6 +22,7 @@ const Input = () => {
         }
 
         event.preventDefault();
+
         const url = ( 'http://localhost:5000/posts' )
         fetch( url, {
             method: "POST",
@@ -37,7 +45,8 @@ const Input = () => {
         const value = event.target.value;
         const field = event.target.name;
         const date = new Date().toLocaleString()
-        const newServices = { ...services, date };
+        const { name, photoUrl } = details;
+        const newServices = { ...services, date, name, photoUrl };
         newServices[ field ] = value;
         setServices( newServices )
     }
