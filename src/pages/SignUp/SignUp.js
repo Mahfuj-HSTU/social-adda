@@ -14,6 +14,8 @@ const SignUp = () => {
         const name = form.name.value;
         const email = form.email.value;
         const photoUrl = form.photoUrl.value;
+        const institute = form.institute.value;
+        const address = form.address.value;
         const password = form.password.value;
 
         // const user = { name, email, password, photoUrl }
@@ -22,7 +24,8 @@ const SignUp = () => {
         createUser( email, password )
             .then( result => {
                 const user = result.user;
-                console.log( user );
+                // console.log( user );
+                saveUsers();
                 form.reset();
                 toast.success( 'Registration successful.' )
                 setError( '' )
@@ -31,6 +34,23 @@ const SignUp = () => {
                 console.error( error )
                 setError( error.message );
             } )
+
+
+        // save users
+        const saveUsers = () => {
+            const user = { name, email, photoUrl, institute, address };
+            fetch( 'http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify( user )
+            } )
+                .then( res => res.json() )
+                .then( data => {
+                    console.log( data )
+                } )
+        }
     }
 
 
