@@ -40,7 +40,7 @@ const Input = () => {
                     <input onChange={ handleChange } type="text" name='image' className="input input-bordered w-96 rounded-lg" placeholder="Photo url" />
                 </div>
                 <div>
-                    <input onChange={ handleChange } className="btn btn-primary px-5 mt-5 text-lg" type="submit" value="Submit" />
+                    <input onChange={ handleChange } className="btn btn-primary px-5 mt-5 text-lg rounded-lg" type="submit" value="Submit" />
                 </div>
             </form>
         </div>

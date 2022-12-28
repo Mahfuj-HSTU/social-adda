@@ -36,39 +36,57 @@ const SignUp = () => {
 
     return (
         <div className="hero w-full my-24">
-            <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100 py-10">
+            <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl bg-base-100 py-10">
                 <h1 className="text-5xl text-center font-bold">Register </h1>
                 <form onSubmit={ handleRegister } className="card-body">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Full Name</span>
+                            <span className="label-text text-lg">Full Name</span>
                         </label>
                         <input type="text" name='name' placeholder="Enter your name" className="input input-bordered" />
                     </div>
+
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text text-lg">Email</span>
                         </label>
                         <input type="email" name='email' placeholder="Enter your email" className="input input-bordered" required />
                         <p className='text-red-600 font-semibold'>{ error.slice( 22, 42 ) }</p>
                     </div>
+
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Photo URL</span>
+                            <span className="label-text text-lg">Photo URL</span>
                         </label>
                         <input type="text" name='photoUrl' placeholder="photo url" className="input input-bordered" />
                     </div>
+
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Password</span>
+                            <span className="label-text text-lg">Institute</span>
+                        </label>
+                        <input type="text" name='institute' placeholder="your institute" className="input input-bordered" />
+                    </div>
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-lg">Address</span>
+                        </label>
+                        <input type="text" name='address' placeholder="your address" className="input input-bordered" />
+                    </div>
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-lg">Password</span>
                         </label>
                         <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                         <label className="label">
-                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                            <a href="#" className="label-text-alt text-base link link-hover">Forgot password?</a>
                         </label>
                     </div>
+
                     <div className="form-control mt-6">
-                        <input className="btn btn-primary" type="submit" value="Register" />
+                        <input className="btn btn-primary text-lg" type="submit" value="Register" />
                     </div>
                 </form>
                 {/* if you are old user and you have an account */ }
