@@ -4,8 +4,10 @@ import Main from '../../layout/Main/Main';
 import About from '../../pages/About/About';
 import Login from '../../pages/Login/Login';
 import Media from '../../pages/Media/Media';
+import PostDetails from '../../pages/Media/PostDetails';
 import Message from '../../pages/Message/Message';
 import SignUp from '../../pages/SignUp/SignUp';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter( [
     {
@@ -19,6 +21,11 @@ const router = createBrowserRouter( [
             {
                 path: '/media',
                 element: <Media></Media>
+            },
+            {
+                path: '/posts/:id',
+                loader: ( { params } ) => fetch( `http://localhost:5000/posts/${ params.id }` ),
+                element: <PrivateRoute><PostDetails></PostDetails></PrivateRoute>
             },
             {
                 path: '/message',

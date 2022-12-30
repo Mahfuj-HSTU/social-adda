@@ -4,17 +4,22 @@ import { useQuery } from '@tanstack/react-query';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import EditDetails from './EditDetails';
+import Loading from '../Shared/Loading/Loading';
 
 const About = () => {
     const { user } = useContext( AuthContext )
     // console.log( user?.email )
 
-    const { data: details = [] } = useQuery( {
+    const { data: details = [], isLoading } = useQuery( {
         queryKey: [ 'details' ],
         queryFn: () => fetch( `http://localhost:5000/users/${ user.email }` )
             .then( res => res.json() )
     } )
     // console.log( details );
+
+    if ( isLoading ) {
+        <Loading></Loading>
+    }
 
     return (
         <div className='mt-24'>
